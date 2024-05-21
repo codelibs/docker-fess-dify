@@ -1,0 +1,10 @@
+services:
+  ollama:
+    image: ollama/ollama:0.1.36
+    container_name: ollama
+    volumes:
+      - ./volumes/ollama:/root/.ollama
+    pull_policy: always
+    restart: unless-stopped
+    ports:
+      - 11434:11434

@@ -1,0 +1,7 @@
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: ['gpu']

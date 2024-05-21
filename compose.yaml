@@ -1,0 +1,21 @@
+services:
+  fess:
+    image: ghcr.io/codelibs/fess:14.13.0
+    container_name: fess
+    environment:
+      - "SEARCH_ENGINE_HTTP_URL=http://opensearch:9200"
+      - "FESS_DICTIONARY_PATH=${FESS_DICTIONARY_PATH:-/usr/share/opensearch/config/dictionary/}"
+      - "FESS_JAVA_OPTS=-Dfess.system.fess.dify.doc.max_length=8000 -Dfess.system.fess.dify.query_normalization=true"
+      - "FESS_PLUGINS=fess-webapp-dify:14.13.0-SNAPSHOT"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - opensearch
+      - nginx
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    restart: unless-stopped
+

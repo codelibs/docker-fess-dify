@@ -1,0 +1,11 @@
+nginx/
+target/
+volumes/app/
+volumes/db/
+volumes/ollama
+volumes/redis/
+volumes/sandbox/
+volumes/ssrf_proxy/
+volumes/weaviate/
+
+compose-dify.yaml
